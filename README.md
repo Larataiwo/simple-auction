@@ -1,66 +1,18 @@
-## Foundry
+## Auction Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project implements a decentralized auction system on the Ethereum blockchain using Solidity. The contract allows users to place bids in an auction for a specific period. 
 
-Foundry consists of:
+The owner can withdraw the highest bid, and participants who are outbid are refunded their previous bids automatically. The auction runs for a fixed duration, and at the end, the highest bidder is declared the winner.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-## Documentation
+## Features
 
-https://book.getfoundry.sh/
+**Bid management:** Users can place bids, and their previous bids are refunded if they are outbid.
 
-## Usage
+**Owner controls:** The contract owner can withdraw funds and pick the auction winner.
 
-### Build
+**Refund system:** Users who are outbid receive their previous bid back.
 
-```shell
-$ forge build
-```
+**Dynamic bidding:** The highest bidder is continuously updated, and only bids higher than the current highest bid are accepted.
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+**Automatic winner selection:** The contract automatically tracks the highest bid and allows the owner to declare the winner at the end of the auction.
